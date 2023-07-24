@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import List from './components/List/List';
+import { useDispatch } from 'react-redux';
+import { favoritesActions } from './Store/Favorites';
 
 function App() {
+  const dispatch = useDispatch();
   const [items, setItems] = useState([]);
 
   const loadDetails = (items) => {
@@ -16,6 +19,14 @@ function App() {
   };
 
   useEffect(() => {
+    // Inicialização
+    const localData = localStorage.getItem('react-redux');
+    if (localData) {
+        const parsed = JSON.parse(localData);
+        const { favorites } = parsed;
+        dispatch(favoritesActions.init(favorites));
+    }
+
     fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
       .then((response) => {
           return response.json();
@@ -27,7 +38,7 @@ function App() {
       .catch(() => {
         console.error('Error');
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

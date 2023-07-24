@@ -4,3 +4,4 @@
 Nesta prática foi exemplificado:
  - Como obter dados de uma API e listá-los no front-end de uma aplicação.
  - Utilizar o recurso Context API.
+ - Utilizar o recurso Context Redux.
