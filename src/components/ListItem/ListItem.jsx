@@ -1,32 +1,30 @@
 import './ListItem.css';
 import Heart from '../Heart/Heart';
-import { useDispatch, useSelector } from 'react-redux';
-import { favoritesActions } from '../../Store/Favorites';
 
-function ListItem({ item }) {
-    const favorites = useSelector(({ favorites }) => favorites);
-    const dispatch = useDispatch();
-
+function ListItem({ isFavorite = false, item, onAddItem, onRemoveItem }) {
     const { name, sprites } = item;
     const sprite = sprites.other['official-artwork'].front_default;
-    const isFavorite = favorites.includes(item.id);
-
+    
     const handleClick = () => {
         if (isFavorite) {
-            dispatch(favoritesActions.remove(item));
+            onRemoveItem && onRemoveItem(item);
         } else {
-            dispatch(favoritesActions.add(item));
+            onAddItem && onAddItem(item);
         }
     };
 
     return (
-        <li className="list-item">
+        <li className="list-item" data-testid={`list-item-${item.id}`}>
             <div className="list-item-image-wrapper">
                 <img alt={name} className="list-item-image" src={sprite} />
             </div>
             <p>{name}</p>
             <div className='list-item-heart-wrapper'>
-                <Heart onClick={handleClick} selected={isFavorite} />
+                <Heart
+                    onClick={handleClick}
+                    selected={isFavorite}
+                    testId={`heart-${item.id}`}
+                />
             </div>
         </li>
     );
