@@ -10,6 +10,6 @@ Nesta prática foi exemplificado:
  - Criar uma página no Storybook e um Stories para cada um dos componentes da aplicação (Heart, List e ListItem);
  - E otimizar o App com Google Lighthouse tanto para Mobile quanto para Desktop: Resultados apresentados nas imagens abaixo.
 
-  <img src="/assets/imgSEO.jpg">
+  <img src="/src/assets/imgSEO.png">
 
-  <img src="/assets/imgSEO2.jpg">
+  <img src="/src/assets/imgSEO2.png">
