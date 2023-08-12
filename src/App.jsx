@@ -31,7 +31,7 @@ function App() {
         dispatch(favoritesActions.init(favorites));
     }
 
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=5')
       .then((response) => {
           return response.json();
       })
